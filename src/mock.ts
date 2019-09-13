@@ -3,7 +3,7 @@ export const mockMap = {};
 
 export interface MockRequest {
     url: string;
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
     body?: any;
     headers?: any;
     params?: any;
@@ -22,7 +22,7 @@ export interface Mock {
 
 export interface MockOptions {
     priority?: number;
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
     url: string;
     requestHeaders?: any;
     requestParams?: any;

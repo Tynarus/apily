@@ -102,7 +102,7 @@ The `mock()` function takes a single parameter, a `MockOptions` object. `MockOpt
 ```typescript
 interface MockOptions {
     priority?: number;
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
     url: string;
     requestHeaders?: any;
     requestParams?: any;
@@ -113,7 +113,7 @@ interface MockOptions {
 ```
 
 - `priority` is the priority of the mock being created. In the case that multiple mocks are found for a given request, the one with the lowest `priority` value will be used. If multiple are found with the same `priority` value, the first one in wins.
-- `method` is the required request method. `GET`, `POST`, `PUT`, or `DELETE`. `PATCH` is planned for a future release, and all calls with the `OPTIONS` method are ignored by APIly.
+- `method` is the required request method. `GET`, `POST`, `PUT`, `PATCH`, or `DELETE`. All calls with the `OPTIONS` method are ignored by APIly.
 - `url` the exact url for the mock. `/test`, `/users/1/details`, `/news/items`, or whatever your particular request URL may be. Regex param variables are planned for a future release.
 - `requestHeaders` the headers that the mock requires. For example, setting this to `{ 'Authorization': 'Bearer mytoken' }` will mean that the mock will require that any requests send the `Authorization` header with the value `Bearer mytoken`.
 - `requestParams` the URL params that the mock requires. This is not yet functional and is planned for a future release.
