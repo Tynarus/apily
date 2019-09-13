@@ -1,6 +1,6 @@
 {
     "name": "apily",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "scripts": {
         "start": "tsc && node ./dist/test-mock-impl.js"
     },
@@ -10,6 +10,7 @@
         "type": "git",
         "url": "https://github.com/Tynarus/apily"
     },
+    "license": "GPL-3.0",
     "dependencies": {
         "body-parser": "^1.19.0",
         "express": "^4.17.1",
