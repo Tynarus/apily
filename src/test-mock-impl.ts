@@ -1,4 +1,4 @@
-import start from './mock-service';
+import { start } from './mock-service';
 import { mock } from './mock';
 
 mock({

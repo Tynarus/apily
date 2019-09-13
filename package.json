@@ -1,6 +1,6 @@
 {
     "name": "apily",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "scripts": {
         "start": "tsc && node ./dist/test-mock-impl.js"
     },
@@ -11,12 +11,14 @@
         "url": "https://github.com/Tynarus/apily"
     },
     "dependencies": {
-        "@types/body-parser": "^1.17.1",
-        "@types/express": "^4.17.1",
-        "@types/node": "^8.10.45",
         "body-parser": "^1.19.0",
         "express": "^4.17.1",
         "ts-node": "~7.0.0",
         "typescript": "^3.4.5"
+    },
+    "devDependencies": {
+        "@types/body-parser": "^1.17.1",
+        "@types/express": "^4.17.1",
+        "@types/node": "^8.10.45"
     }
 }

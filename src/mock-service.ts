@@ -111,7 +111,7 @@ function matchingRequestHeaders(mock: Mock, request: express.Request) {
     return true;
 }
 
-export default function start(port = 4300) {
+export function start(port = 4300) {
     for(const mock of mocks) {
         const key = mock.mockRequest.url + ':' + mock.mockRequest.method;
         if(!mockMap[key]) {
