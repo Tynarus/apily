@@ -6,6 +6,10 @@
     },
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Tynarus/apily"
+    },
     "dependencies": {
         "@types/body-parser": "^1.17.1",
         "@types/express": "^4.17.1",
