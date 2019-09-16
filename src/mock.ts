@@ -1,6 +1,19 @@
 export const mocks: Mock[] = [];
 export const mockMap = {};
 
+export class ResponseFile {
+
+    private readonly _fileName: string;
+
+    public constructor(fileName: string) {
+        this._fileName = fileName;
+    }
+
+    public get fileName() {
+        return this._fileName;
+    }
+}
+
 export interface MockRequest {
     url: string;
     method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
@@ -12,6 +25,7 @@ export interface MockRequest {
 export interface MockResponse {
     status: number;
     body?: any;
+    headers?: any;
 }
 
 export interface Mock {
@@ -27,6 +41,7 @@ export interface MockOptions {
     requestHeaders?: any;
     requestParams?: any;
     responseStatus: number;
+    responseHeaders?: any;
     requestBody?: any;
     responseBody?: any;
 }
@@ -43,6 +58,7 @@ export function mock(options: MockOptions): Mock {
         },
         mockResponse: {
             status: options.responseStatus,
+            headers: options.responseHeaders,
             body: options.responseBody
         }
     };

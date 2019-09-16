@@ -1,12 +1,12 @@
-# APIly
+# Apily
 
 A basic mock service written in JavaScript, for easy implementation into JavaScript UI projects requiring mocks for development or testing.
 
-APIly is written in TypeScript, and as such includes typings. Documentation examples will be written in TypeScript.
+Apily is written in TypeScript, and as such includes typings. Documentation examples will be written in TypeScript.
 
 ## Setting up a Mock Service
 
-Once the APIly package is installed, standing a mock service up is fairly straightforward. We'll start by making the main file that will launch the mock server.
+Once the Apily package is installed, standing a mock service up is fairly straightforward. We'll start by making the main file that will launch the mock server.
 
 For TypeScript projects, create a new directory called `mock/` at the root of your project, with an appropriate `tsconfig.json` file (your desired tsconfig may vary):
  
@@ -108,15 +108,18 @@ interface MockOptions {
     requestParams?: any;
     requestBody?: any;
     responseStatus: number;
+    responseHeaders?: any;
     responseBody?: any;
 }
 ```
 
 - `priority` is the priority of the mock being created. In the case that multiple mocks are found for a given request, the one with the lowest `priority` value will be used. If multiple are found with the same `priority` value, the first one in wins.
-- `method` is the required request method. `GET`, `POST`, `PUT`, `PATCH`, or `DELETE`. All calls with the `OPTIONS` method are ignored by APIly.
+- `method` is the required request method. `GET`, `POST`, `PUT`, `PATCH`, or `DELETE`. All calls with the `OPTIONS` method are ignored by Apily.
 - `url` the exact url for the mock. `/test`, `/users/1/details`, `/news/items`, or whatever your particular request URL may be. Regex param variables are planned for a future release.
 - `requestHeaders` the headers that the mock requires. For example, setting this to `{ 'Authorization': 'Bearer mytoken' }` will mean that the mock will require that any requests send the `Authorization` header with the value `Bearer mytoken`.
 - `requestParams` the URL params that the mock requires. This is not yet functional and is planned for a future release.
 - `requestBody` the JSON request body required by the mock. 
 - `responseStatus` the response status code. Ie `200` for OK, `401` for Unauthorized, `500` for internal server error, etc.
-- `responseBody` the JSON body that will be returned by the mock. Additional response types are planned for a future release.
+- `responseHeaders` the response headers that will be returned by the mock.
+- `responseBody` the body that will be returned by the mock. Accepts strings, JSON, or a `ResponseFile` object that accepts a `fileName` parameter.
+  - It is possible to return static files, ie PDFs, as such: Supply a `responseBody` value of `new ResponseFile(myFileNameAndPath)` with a matching `responseHeaders` header of `'content-type': 'application/pdf'`.
