@@ -1,5 +1,5 @@
 import { start } from './mock-service';
-import { mock } from './mock';
+import {mock, ResponseFile} from './mock';
 
 mock({
     method: 'GET',
@@ -47,9 +47,25 @@ mock({
         testValue2: 'boss'
     },
     responseStatus: 200,
-    responseBody: {
-        text: 'Hello world!'
-    }
+    responseHeaders: {
+        'content-type': 'text/plain'
+    },
+    responseBody: 'hello world'
+});
+
+mock({
+    priority: 1,
+    method: 'POST',
+    url: '/test',
+    requestBody: {
+        testValue1: 'solid',
+        testValue2: 'snake'
+    },
+    responseStatus: 200,
+    responseHeaders: {
+        'content-type': 'application/pdf'
+    },
+    responseBody: new ResponseFile('./files/test.pdf')
 });
 
 start();

@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import { mocks, mockMap, Mock } from './mock';
+import {mocks, mockMap, Mock, ResponseFile} from './mock';
+import * as fs from "fs";
 
 function getClass(obj) {
     return Object.prototype.toString.call(obj);
@@ -187,8 +188,25 @@ export function start(port = 4300) {
                 }
             }
 
+            if(highestPriorityMock.mockResponse.headers) {
+                response = response.set(highestPriorityMock.mockResponse.headers);
+            }
+
             if(highestPriorityMock.mockResponse.body) {
-                response.status(highestPriorityMock.mockResponse.status).send(highestPriorityMock.mockResponse.body);
+                const responseBody = highestPriorityMock.mockResponse.body;
+
+                if(responseBody instanceof ResponseFile) {
+                    fs.readFile(responseBody.fileName, (err, data) => {
+                        if(err) {
+                            console.error(err);
+                            response.sendStatus(500);
+                        } else {
+                            response.status(highestPriorityMock.mockResponse.status).send(data);
+                        }
+                    });
+                } else {
+                    response.status(highestPriorityMock.mockResponse.status).send(highestPriorityMock.mockResponse.body);
+                }
             } else {
                 response.sendStatus(highestPriorityMock.mockResponse.status);
             }
