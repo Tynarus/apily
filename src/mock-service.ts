@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import {mocks, mockMap, Mock, ResponseFile} from './mock';
+import { mocks, mockMap, Mock, ResponseFile } from './mock';
 import * as fs from "fs";
 
 function getClass(obj) {

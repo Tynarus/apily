@@ -1,5 +1,5 @@
 import { start } from './mock-service';
-import {mock, ResponseFile} from './mock';
+import { mock, ResponseFile } from './mock';
 
 mock({
     method: 'GET',
