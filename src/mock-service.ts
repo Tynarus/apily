@@ -156,7 +156,6 @@ export function start(port = 4300) {
 
             if(foundMatch) {
                 fullyMatchingMocks.push(checkMock);
-                break;
             }
         }
 
